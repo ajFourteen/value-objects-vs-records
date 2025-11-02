@@ -1,10 +1,10 @@
 package de.fourteen.valueObjectsVsRecords.amountAsBigDecimal.moneyAsClass;
 
-final class CardItem {
+final class CartItem {
   private final Money price;
   private final String name;
 
-  CardItem(final Money price, final String name) {
+  CartItem(final Money price, final String name) {
     this.price = price;
     this.name = name;
   }

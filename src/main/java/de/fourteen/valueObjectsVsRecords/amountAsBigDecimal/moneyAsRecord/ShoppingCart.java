@@ -5,23 +5,23 @@ import java.util.Collection;
 import java.util.Currency;
 
 final class ShoppingCart {
-  private final Collection<CardItem> cardItems;
+  private final Collection<CartItem> CartItems;
 
-  ShoppingCart(final Collection<CardItem> cardItems) {
-    this.cardItems = cardItems;
+  ShoppingCart(final Collection<CartItem> CartItems) {
+    this.CartItems = CartItems;
   }
 
   Money totalAmount(Currency expectedCurrency) {
-    boolean allCardItemsPricesHaveExpectedCurrency = cardItems
+    boolean allCartItemsPricesHaveExpectedCurrency = CartItems
         .stream()
-        .anyMatch(cardItem -> cardItem.price().currency().equals(expectedCurrency));
-    if (!allCardItemsPricesHaveExpectedCurrency) {
+        .anyMatch(CartItem -> CartItem.price().currency().equals(expectedCurrency));
+    if (!allCartItemsPricesHaveExpectedCurrency) {
       throw new IllegalStateException(
           "At least one card item has an unexpected currency");
     }
-    BigDecimal totalAmount = cardItems
+    BigDecimal totalAmount = CartItems
         .stream()
-        .map(cardItem -> cardItem.price().amount())
+        .map(CartItem -> CartItem.price().amount())
         .reduce(BigDecimal.ZERO, BigDecimal::add);
     return new Money(totalAmount, expectedCurrency);
   }
