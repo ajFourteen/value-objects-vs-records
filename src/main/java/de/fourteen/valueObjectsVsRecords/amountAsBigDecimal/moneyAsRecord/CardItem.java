@@ -1,0 +1,16 @@
+package de.fourteen.valueObjectsVsRecords.amountAsBigDecimal.moneyAsRecord;
+
+final class CardItem {
+  private final Money
+      price;
+  private final String name;
+
+  CardItem(final Money price, final String name) {
+    this.price = price;
+    this.name = name;
+  }
+  
+  Money price() {
+    return price;
+  }
+}
